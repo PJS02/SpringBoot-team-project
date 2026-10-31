@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>회원정보 수정</title>
+</head>
+
+<body>
+
+<h2>회원정보 수정</h2>
+
+<form th:action="@{/user/edit}"
+      th:object="${profileUpdateRequest}"
+      method="post">
+
+    <div>
+        <label>이름</label>
+        <input type="text"
+               th:field="*{name}"
+               maxlength="50"
+               required>
+        <p th:errors="*{name}"></p>
+    </div>
+
+    <div>
+        <label>이메일</label>
+        <input type="email"
+               th:field="*{email}"
+               maxlength="100"
+               required>
+        <p th:errors="*{email}"></p>
+    </div>
+
+    <p th:each="err : ${#fields.globalErrors()}"
+       th:text="${err}"></p>
+
+    <button type="submit">수정 완료</button>
+</form>
+
+<a th:href="@{/user/profile}">취소</a>
+
+</body>
+</html>

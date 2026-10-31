@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>내 프로필</title>
+</head>
+
+<body>
+
+    <h2>내 프로필</h2>
+
+    <p>
+        회원번호:
+        <span th:text="${user.userId}"></span>
+    </p>
+
+    <p>
+        아이디:
+        <span th:text="${user.username}"></span>
+    </p>
+
+    <p>
+        이름:
+        <span th:text="${user.name}"></span>
+    </p>
+
+    <p>
+        이메일:
+        <span th:text="${user.email}"></span>
+    </p>
+
+    <p>
+        회원 상태:
+        <span th:text="${user.status}"></span>
+    </p>
+
+	<p>
+	    <a th:href="@{/user/edit}">회원정보 수정</a>
+	</p>
+	
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">로그아웃</button>
+		
+    </form>
+	
+	<p>
+	    <a th:href="@{/user/withdraw}">
+	        회원탈퇴
+	    </a>
+	</p>
+	<p th:if="${param.passwordChanged}">
+	    비밀번호가 변경되었습니다.
+	</p>
+
+	<p>
+	    <a th:href="@{/user/password}">
+	        비밀번호 변경
+	    </a>
+	</p>
+
+</body>
+</html>
